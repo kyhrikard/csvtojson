@@ -1,7 +1,13 @@
 const csv = require('csvtojson')
 const express = require('express')
 const request = require('request')
+const port = process.env.PORT || 5000
 const app = express()
+
+app.listen(port, () => {
+    console.log(`Server is running at port ${port}`)
+})
+
 
 const masterUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRjf7u96UJhWMAZpNYncsozqxx38kCSLERWb7nLQZZ3zuK5leKFYnpnFjPQAlQWU6nDls6kkT9RDT44/pub?output=csv'
 
@@ -79,7 +85,7 @@ app.get('/class/:className/:secret', ( req, res ) => {
         .then( data => res.json( data ) );
 
 } );
-app.listen(3000)
+
 
 
     
